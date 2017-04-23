@@ -8,7 +8,6 @@ compile()
 
 function compile() {
   const json = eval('(' + leftInput.value + ')')
-  console.log('json', json)
   window.jstt.compile(json, 'Demo')
     .then(ts => {
       rightOutput.value = ts
