@@ -1,6 +1,6 @@
 {
   "name": "json-schema-to-typescript-browser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Browser usage demo for json-schema-to-typescript",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/bcherny/json-schema-to-typescript-browser#readme",
   "dependencies": {
-    "json-schema-to-typescript": "^4.1.0",
+    "json-schema-to-typescript": "^4.3.0",
     "node-static": "^0.7.9"
   },
   "devDependencies": {
