@@ -10,31 +10,27 @@
       <div id="leftInput">
         <h2>Input (JSON Schema)</h2>
         <textarea>{
-  title: 'Example Schema',
-  type: 'object',
-  properties: {
-    firstName: {
-      type: 'string'
+  "title": "Example Schema",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string"
     },
-    lastName: {
-      type: 'string'
+    "lastName": {
+      "type": "string"
     },
-    age: {
-      description: 'Age in years',
-      type: 'integer',
-      minimum: 0
+    "age": {
+      "description": "Age in years",
+      "type": "integer",
+      "minimum": 0
     },
-    height: {
-      type: 'number'
-    },
-    favoriteFoods: {
-      type: 'array'
-    },
-    likesDogs: {
-      type: 'boolean'
+    "hairColor": {
+      "enum": ["black", "brown", "blue"],
+      "type": "string"
     }
   },
-  required: ['firstName', 'lastName']
+  "additionalProperties": false,
+  "required": ["firstName", "lastName"]
 }
       </textarea>
       </div>

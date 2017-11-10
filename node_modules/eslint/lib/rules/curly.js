@@ -9,7 +9,6 @@
 //------------------------------------------------------------------------------
 
 const astUtils = require("../ast-utils");
-const esUtils = require("esutils");
 
 //------------------------------------------------------------------------------
 // Rule Definition
@@ -239,8 +238,8 @@ module.exports = {
                     // `do while` expressions sometimes need a space to be inserted after `do`.
                     // e.g. `do{foo()} while (bar)` should be corrected to `do foo() while (bar)`
                     const needsPrecedingSpace = node.type === "DoWhileStatement" &&
-                        sourceCode.getTokenBefore(bodyNode).end === bodyNode.start &&
-                        esUtils.code.isIdentifierPartES6(sourceCode.getText(bodyNode).charCodeAt(1));
+                        sourceCode.getTokenBefore(bodyNode).range[1] === bodyNode.range[0] &&
+                        !astUtils.canTokensBeAdjacent("do", sourceCode.getFirstToken(bodyNode, { skip: 1 }));
 
                     const openingBracket = sourceCode.getFirstToken(bodyNode);
                     const closingBracket = sourceCode.getLastToken(bodyNode);
@@ -294,7 +293,7 @@ module.exports = {
                 }
             } else if (multiOrNest) {
                 if (hasBlock && body.body.length === 1 && isOneLiner(body.body[0])) {
-                    const leadingComments = sourceCode.getComments(body.body[0]).leading;
+                    const leadingComments = sourceCode.getCommentsBefore(body.body[0]);
 
                     expected = leadingComments.length > 0;
                 } else if (!isOneLiner(body)) {
