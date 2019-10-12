@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/bcherny/json-schema-to-typescript-browser#readme",
   "dependencies": {
-    "json-schema-to-typescript": "^5.0.0",
     "node-static": "^0.7.10"
   },
   "devDependencies": {
