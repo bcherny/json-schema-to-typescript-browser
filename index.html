@@ -39,7 +39,22 @@
         <textarea readonly></textarea>
       </div>
     </div>
-    <script src="https://unpkg.com/json-schema-to-typescript@5.0.0/dist/bundle.js"></script>
+    <script src="https://unpkg.com/prettier@1.18.2/standalone.js"></script>
+    <script src="https://unpkg.com/prettier@1.18.2/parser-typescript.js"></script>
+    <script>
+      const formatWithPrettier = prettier.format.bind(prettier);
+
+      // standalone requires parsers be explicitly loaded
+      prettier.format = (str, options) =>
+        formatWithPrettier(str, {
+          ...options,
+          plugins: {
+            ...prettierPlugins,
+            ...options.plugins,
+          }
+        });
+    </script>
+    <script src="https://unpkg.com/json-schema-to-typescript@7.1.0/dist/bundle.js"></script>
     <script src="./index.js"></script>
   </body>
 </html>
