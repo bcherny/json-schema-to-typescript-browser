@@ -1,15 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Online JSONSchema to TypeScript Converter</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
     <div id="app">
       <div id="leftInput">
         <h2>Input (JSON Schema)</h2>
-        <textarea>{
+        <textarea>
+{
   "title": "Example Schema",
   "type": "object",
   "properties": {
@@ -32,7 +33,7 @@
   "additionalProperties": false,
   "required": ["firstName", "lastName"]
 }
-      </textarea>
+        </textarea>
       </div>
       <div id="rightOutput">
         <h2>Output (TypeScript)</h2>
@@ -50,7 +51,7 @@
           ...options,
           plugins: {
             ...prettierPlugins,
-            ...options.plugins,
+            ...options.plugins
           }
         });
     </script>

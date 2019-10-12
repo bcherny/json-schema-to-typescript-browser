@@ -6,15 +6,15 @@
 }
 
 body {
-  font: 14px/22px "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px/22px '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #leftInput,
 #rightOutput {
   position: absolute;
-    bottom: 0;
-    left: 0;
-    top: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
   width: 50%;
 }
 
@@ -30,8 +30,8 @@ textarea {
   height: 100%;
   padding: 10px;
   position: absolute;
-    left: 0;
-    top: 50px;
+  left: 0;
+  top: 50px;
   resize: none;
   width: 100%;
 }
