@@ -4,11 +4,33 @@
     <meta charset="utf-8" />
     <title>Online JSONSchema to TypeScript Converter</title>
     <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/v5.7.0/css/free.min.css" media="all" />
   </head>
   <body>
     <div id="app">
       <div id="leftInput">
         <h2>Input (JSON Schema)</h2>
+        <div class="buttons">
+          <div class="dropdown">
+            <span id="configButton" title="Config">
+              <i class="fa fa-lg fa-cog"></i>
+            </span>
+            <div class="dropdown-content">
+              <input id="declareExternallyReferenced" type="checkbox" name="gender" value="true" checked />
+              <label for="declareExternallyReferenced">declareExternallyReferenced</label>
+              <br />
+              <input id="enableConstEnums" type="checkbox" name="gender" value="true" checked />
+              <label for="enableConstEnums">enableConstEnums</label>
+              <br />
+              <input id="unreachableDefinitions" type="checkbox" name="gender" value="false" />
+              <label for="unreachableDefinitions">unreachableDefinitions</label>
+              <br />
+              <input id="strictIndexSignatures" type="checkbox" name="strictIndexSignatures" value="false" />
+              <label for="strictIndexSignatures">strictIndexSignatures</label>
+              <br />
+            </div>
+          </div>
+        </div>
         <textarea>
 {
   "title": "Example Schema",

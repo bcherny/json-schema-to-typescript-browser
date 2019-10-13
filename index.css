@@ -11,6 +11,32 @@ body {
   width: 100%;
 }
 
+.buttons {
+  position: absolute;
+  display: flex;
+  top: 50px;
+  right: 0;
+  padding: 5px;
+}
+
+.buttons span {
+  color: #333333;
+  display: inline-block;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  margin-left: 5px;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.42856143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+}
+
 #app {
   display: flex;
   height: 100vh;
@@ -18,6 +44,7 @@ body {
 
 #leftInput,
 #rightOutput {
+  position: relative;
   display: flex;
   flex-grow: 1;
   flex-basis: 0;
@@ -25,11 +52,11 @@ body {
 }
 
 #rightOutput {
-  border-left: 1px solid #ccc;
+  border-left: 1px solid #cccccc;
 }
 
 textarea {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #cccccc;
   box-sizing: border-box;
   font-size: 15px;
   height: 100%;
@@ -39,12 +66,33 @@ textarea {
 }
 
 #rightOutput textarea {
-  background: #eee;
+  background: #eeeeee;
 }
 
 h2 {
-  color: #999;
+  color: #999999;
   line-height: 50px;
   padding: 0 10px;
   text-align: center;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  right: 0;
+  z-index: 1;
+  user-select: none;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
