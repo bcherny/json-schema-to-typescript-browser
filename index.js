@@ -48,10 +48,6 @@ function compile() {
 
   window.jstt
     .compile(json, 'Demo', options)
-    .then(ts => {
-      rightOutput.value = ts;
-    })
-    .catch(e => {
-      console.error(e);
-    });
+    .then(ts => (rightOutput.value = ts))
+    .catch(console.error);
 }
