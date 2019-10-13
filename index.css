@@ -7,33 +7,35 @@
 
 body {
   font: 14px/22px '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: absolute;
+  width: 100%;
+}
+
+#app {
+  display: flex;
+  height: 100vh;
 }
 
 #leftInput,
 #rightOutput {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  top: 0;
-  width: 50%;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  flex-direction: column;
 }
 
 #rightOutput {
   border-left: 1px solid #ccc;
-  left: 50%;
 }
 
 textarea {
   border-top: 1px solid #ccc;
   box-sizing: border-box;
-  font: 18px/28px Menlo;
+  font-size: 15px;
   height: 100%;
   padding: 10px;
-  position: absolute;
-  left: 0;
-  top: 50px;
   resize: none;
-  width: 100%;
+  flex-grow: 1;
 }
 
 #rightOutput textarea {
