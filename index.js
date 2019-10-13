@@ -44,7 +44,8 @@ compile();
 
 function compile() {
   localStorage.setItem(localStorageKey, leftInput.value);
-  const json = eval('(' + leftInput.value + ')');
+  const json = eval(`(${leftInput.value})`);
+
   window.jstt
     .compile(json, 'Demo', options)
     .then(ts => {
