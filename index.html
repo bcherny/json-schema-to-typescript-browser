@@ -47,13 +47,12 @@
 
       // standalone requires parsers be explicitly loaded
       prettier.format = (str, options) =>
-        formatWithPrettier(str, {
-          ...options,
-          plugins: {
-            ...prettierPlugins,
-            ...options.plugins
-          }
-        });
+        formatWithPrettier(
+          str,
+          Object.assign({}, options, {
+            plugins: Object.assign({}, prettierPlugins, options.plugins)
+          })
+        );
     </script>
     <script src="https://unpkg.com/json-schema-to-typescript@7.1.0/dist/bundle.js"></script>
     <script src="./index.js"></script>
