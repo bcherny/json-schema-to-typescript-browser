@@ -19,6 +19,10 @@ body {
   padding: 5px;
 }
 
+#errorIcon {
+  color: brown;
+}
+
 .buttons span {
   color: #333333;
   display: inline-block;

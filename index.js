@@ -1,5 +1,6 @@
 const leftInput = document.querySelector('#leftInput textarea');
 const rightOutput = document.querySelector('#rightOutput textarea');
+const errorIcon = document.getElementById('errorIcon');
 
 leftInput.addEventListener('input', compile);
 
@@ -44,10 +45,15 @@ compile();
 
 function compile() {
   localStorage.setItem(localStorageKey, leftInput.value);
-  const json = eval(`(${leftInput.value})`);
 
-  window.jstt
-    .compile(json, 'Demo', options)
+  Promise.resolve()
+    .then(() => eval(`(${leftInput.value})`))
+    .then(json => window.jstt.compile(json, 'Demo', options))
     .then(ts => (rightOutput.value = ts))
-    .catch(console.error);
+    .then(() => (errorIcon.style.display = 'none'))
+    .catch(e => {
+      console.error(e);
+
+      errorIcon.style.display = null;
+    });
 }
