@@ -1,0 +1,11 @@
+{
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": ".stylelintrc",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}
