@@ -21,6 +21,11 @@ const options = {
 // expose options for advance users
 window.options = options;
 
+console.info(
+  "Welcome! If you'd like to play around with more advance options,",
+  "you can mutate the 'options' object assigned to window :)"
+);
+
 Object.keys(options).forEach(option => {
   const optionCheckbox = document.getElementById(option);
 
