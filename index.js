@@ -12,13 +12,10 @@ if (content) {
 }
 
 const options = {
-  // bannerComment: '',
   declareExternallyReferenced: true,
   enableConstEnums: true,
-  // style: { /* prettier config */ },
   unreachableDefinitions: false,
   strictIndexSignatures: false
-  // $refOptions: {}
 };
 
 // expose options for advance users
