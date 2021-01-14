@@ -22,13 +22,17 @@
   "author": "Boris Cherny <boris@performancejs.com> (https://performancejs.com)",
   "main": "index.js",
   "scripts": {
-    "start": "static"
+    "start": "static",
+    "bundle": "browserify -r json-schema-to-typescript -s jstt -o bundle.js"
   },
   "dependencies": {
     "node-static": "^0.7.11"
   },
   "devDependencies": {
+    "browserify": "^17.0.0",
+    "browserify-shim": "^3.8.14",
     "eslint": "^6.8.0",
+    "json-schema-to-typescript": "^10.1.2",
     "prettier": "^2.0.5",
     "stylelint": "^13.3.3",
     "stylelint-config-recommended": "^3.0.0"
