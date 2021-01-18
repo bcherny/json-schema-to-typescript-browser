@@ -59,3 +59,9 @@ function compile() {
       errorIcon.style.display = null;
     });
 }
+
+document.getElementById('formatButton').addEventListener('click', format);
+
+function format() {
+  leftInput.value = prettier.format(leftInput.value, { parser: 'json-stringify' });
+}
