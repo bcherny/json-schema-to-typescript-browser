@@ -22,8 +22,8 @@
   "author": "Boris Cherny <boris@performancejs.com> (https://performancejs.com)",
   "main": "index.js",
   "scripts": {
-    "start": "static",
-    "bundle": "browserify -r json-schema-to-typescript -s jstt -o bundle.js"
+    "bundle": "browserify -r json-schema-to-typescript -s jstt -o bundle.js",
+    "start": "static"
   },
   "dependencies": {
     "node-static": "^0.7.11"
