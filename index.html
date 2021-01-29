@@ -11,7 +11,7 @@
       <div id="leftInput">
         <h2>Input (JSON Schema)</h2>
         <div class="buttons">
-          <span id="errorIcon" title="There was an error compiling your schema" style="display: none;">
+          <span id="errorIcon" title="There was an error compiling your schema" style="display: none">
             <i class="fa fa-lg fa-exclamation"></i>
           </span>
           <span id="formatButton" title="Format">
@@ -79,7 +79,7 @@
         formatWithPrettier(
           str,
           Object.assign({}, options, {
-            plugins: Object.assign({}, prettierPlugins, options.plugins),
+            plugins: Object.assign({}, prettierPlugins, options.plugins)
           })
         );
     </script>
