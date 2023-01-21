@@ -30,11 +30,11 @@
   },
   "devDependencies": {
     "browserify": "^17.0.0",
-    "browserify-shim": "^3.8.14",
-    "eslint": "^6.8.0",
-    "json-schema-to-typescript": "^10.1.2",
-    "prettier": "^2.0.5",
-    "stylelint": "^13.3.3",
-    "stylelint-config-recommended": "^3.0.0"
+    "browserify-shim": "^3.8.16",
+    "eslint": "^8.32.0",
+    "json-schema-to-typescript": "*",
+    "prettier": "^2.8.3",
+    "stylelint": "^14.16.1",
+    "stylelint-config-recommended": "^9.0.0"
   }
 }
