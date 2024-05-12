@@ -6,39 +6,46 @@
 }
 
 body {
-  font: 14px/22px '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font:
+    14px/22px '-apple-system',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif;
   position: absolute;
   width: 100%;
 }
 
 .buttons {
+  align-items: center;
   position: absolute;
   display: flex;
+  justify-content: end;
   top: 50px;
   right: 0;
   padding: 5px;
 }
 
 #errorIcon {
-  color: brown;
+  color: red;
 }
 
-.buttons span {
-  color: #333333;
-  display: inline-block;
-  border: 1px solid #cccccc;
+.button {
+  background: transparent;
   border-radius: 4px;
-  margin-left: 5px;
-  padding: 6px 12px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.42856143;
+  color: #333;
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
   text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
   touch-action: manipulation;
-  cursor: pointer;
   user-select: none;
+  width: 40px;
+}
+
+.button:hover {
+  background: #eee;
+  color: #111;
 }
 
 #app {
@@ -74,7 +81,7 @@ textarea {
 }
 
 h2 {
-  color: #999999;
+  font-weight: normal;
   line-height: 50px;
   padding: 0 10px;
   text-align: center;
@@ -82,7 +89,6 @@ h2 {
 
 .dropdown {
   position: relative;
-  display: inline-block;
 }
 
 .dropdown-content {

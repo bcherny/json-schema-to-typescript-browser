@@ -8,7 +8,7 @@ export default {
     file: 'dist/bundle.js',
     format: 'iife',
     globals: {
-      prettier: 'prettier'
+      prettier: 'prettierWithOptions'
     },
     name: 'jstt'
   },

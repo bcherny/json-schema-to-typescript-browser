@@ -1,18 +1,5 @@
 const { compile } = require('json-schema-to-typescript');
 
-const leftInput = document.querySelector('#leftInput textarea');
-const rightOutput = document.querySelector('#rightOutput textarea');
-const errorIcon = document.getElementById('errorIcon');
-
-leftInput.addEventListener('input', update);
-
-const localStorageKey = 'json-schema-to-typescript';
-const content = localStorage.getItem(localStorageKey);
-
-if (content) {
-  leftInput.value = content;
-}
-
 const options = {
   declareExternallyReferenced: true,
   enableConstEnums: true,
@@ -23,44 +10,100 @@ const options = {
 // expose options for advance users
 window.options = options;
 
-console.info("Welcome! If you'd like to play around with more advance options,", "you can mutate the 'options' object assigned to window :)");
+const LOCAL_STORAGE_KEY = 'json-schema-to-typescript';
 
-Object.keys(options).forEach(option => {
-  const optionCheckbox = document.getElementById(option);
+window.addEventListener('DOMContentLoaded', async () => {
+  console.info("Welcome! If you'd like to play around with more advance options,", "you can mutate the 'options' object assigned to window :)");
 
-  if (!(optionCheckbox instanceof HTMLInputElement)) {
-    console.warn(`"${option}" is missing an config element`);
+  // Attach DOM event listeners
+  getLeftInput().addEventListener('input', update);
+  document.getElementById('formatButton').addEventListener('click', format);
 
+  // Init app
+  loadFromLocalStorage();
+  await update();
+  initOptions();
+});
+
+function loadFromLocalStorage() {
+  const content = localStorage.getItem(LOCAL_STORAGE_KEY);
+  if (!content) {
+    return;
+  }
+  getLeftInput().value = content;
+}
+
+function initOptions() {
+  Object.keys(options).forEach(option => {
+    const optionCheckbox = document.getElementById(option);
+    options[option] = optionCheckbox.checked;
+    optionCheckbox.addEventListener('change', async () => {
+      options[option] = optionCheckbox.checked;
+      await update();
+    });
+  });
+}
+
+async function update() {
+  const input = getInput();
+  if (input === undefined) {
     return;
   }
 
-  options[option] = optionCheckbox.checked;
-  optionCheckbox.addEventListener('change', () => {
-    options[option] = optionCheckbox.checked;
-    update();
-  });
-});
+  // save input to local storage
+  save();
 
-// initial compile
-update();
-
-function update() {
-  localStorage.setItem(localStorageKey, leftInput.value);
-
-  Promise.resolve()
-    .then(() => JSON.parse(leftInput.value))
-    .then(json => compile(json, 'Demo', options))
-    .then(ts => (rightOutput.value = ts))
-    .then(() => (errorIcon.style.display = 'none'))
-    .catch(e => {
-      console.error(e);
-
-      errorIcon.style.display = null;
-    });
+  // re-compile TS
+  try {
+    const ts = await compile(input, 'Demo', options);
+    getRightOutput().value = ts;
+    clearError();
+  } catch (e) {
+    setError(e);
+  }
 }
 
-document.getElementById('formatButton').addEventListener('click', format);
+function clearError() {
+  getErrorIcon().style.display = 'none';
+}
+
+function setError(e) {
+  console.error(e);
+  getErrorIcon().title = e;
+  getErrorIcon().style.display = null;
+}
 
 function format() {
-  leftInput.value = prettier.format(leftInput.value, { parser: 'json-stringify' });
+  const input = getInput();
+  if (input === undefined) {
+    return;
+  }
+
+  getLeftInput().value = JSON.stringify(input, null, 2);
+  save();
+}
+
+function save() {
+  localStorage.setItem(LOCAL_STORAGE_KEY, getLeftInput().value);
+}
+
+function getInput() {
+  try {
+    const input = JSON.parse(getLeftInput().value);
+    clearError();
+    return input;
+  } catch (e) {
+    setError(e);
+    return undefined;
+  }
+}
+
+function getLeftInput() {
+  return document.querySelector('#leftInput textarea');
+}
+function getRightOutput() {
+  return document.querySelector('#rightOutput textarea');
+}
+function getErrorIcon() {
+  return document.getElementById('errorIcon');
 }
