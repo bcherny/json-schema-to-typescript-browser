@@ -1,6 +1,6 @@
 {
   "name": "json-schema-to-typescript-browser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Browser usage demo for json-schema-to-typescript",
   "type": "module",
   "keywords": [
