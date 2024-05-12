@@ -1,8 +1,10 @@
+const { compile } = require('json-schema-to-typescript');
+
 const leftInput = document.querySelector('#leftInput textarea');
 const rightOutput = document.querySelector('#rightOutput textarea');
 const errorIcon = document.getElementById('errorIcon');
 
-leftInput.addEventListener('input', compile);
+leftInput.addEventListener('input', update);
 
 const localStorageKey = 'json-schema-to-typescript';
 const content = localStorage.getItem(localStorageKey);
@@ -35,19 +37,19 @@ Object.keys(options).forEach(option => {
   options[option] = optionCheckbox.checked;
   optionCheckbox.addEventListener('change', () => {
     options[option] = optionCheckbox.checked;
-    compile();
+    update();
   });
 });
 
 // initial compile
-compile();
+update();
 
-function compile() {
+function update() {
   localStorage.setItem(localStorageKey, leftInput.value);
 
   Promise.resolve()
-    .then(() => eval(`(${leftInput.value})`))
-    .then(json => window.jstt.compile(json, 'Demo', options))
+    .then(() => JSON.parse(leftInput.value))
+    .then(json => compile(json, 'Demo', options))
     .then(ts => (rightOutput.value = ts))
     .then(() => (errorIcon.style.display = 'none'))
     .catch(e => {

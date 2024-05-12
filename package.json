@@ -2,6 +2,7 @@
   "name": "json-schema-to-typescript-browser",
   "version": "1.0.2",
   "description": "Browser usage demo for json-schema-to-typescript",
+  "type": "module",
   "keywords": [
     "browser",
     "compile",
@@ -22,19 +23,23 @@
   "author": "Boris Cherny <boris@performancejs.com> (https://performancejs.com)",
   "main": "index.js",
   "scripts": {
-    "bundle": "browserify -r json-schema-to-typescript -s jstt -o bundle.js",
-    "start": "static"
+    "bundle": "rollup -c",
+    "start": "static",
+    "watch": "rollup -c -w"
   },
   "dependencies": {
     "node-static": "^0.7.11"
   },
   "devDependencies": {
-    "browserify": "^17.0.0",
-    "browserify-shim": "^3.8.16",
-    "eslint": "^8.32.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "eslint": "^9.2.0",
     "json-schema-to-typescript": "*",
-    "prettier": "^2.8.3",
-    "stylelint": "^14.16.1",
-    "stylelint-config-recommended": "^9.0.0"
+    "prettier": "^3.2.5",
+    "rollup": "^4.17.2",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "stylelint": "^16.5.0",
+    "stylelint-config-recommended": "^14.0.0"
   }
 }
