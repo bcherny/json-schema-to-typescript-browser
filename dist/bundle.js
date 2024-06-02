@@ -36224,8 +36224,6 @@ var jstt = (function (require$$0$1) {
 	// expose options for advance users
 	window.options = options;
 
-	const LOCAL_STORAGE_KEY = 'json-schema-to-typescript';
-
 	window.addEventListener('DOMContentLoaded', async () => {
 	  console.info("Welcome! If you'd like to play around with more advance options,", "you can mutate the 'options' object assigned to window :)");
 
@@ -36234,17 +36232,17 @@ var jstt = (function (require$$0$1) {
 	  document.getElementById('formatButton').addEventListener('click', format);
 
 	  // Init app
-	  loadFromLocalStorage();
+	  loadFromURI();
 	  await update();
 	  initOptions();
 	});
 
-	function loadFromLocalStorage() {
-	  const content = localStorage.getItem(LOCAL_STORAGE_KEY);
-	  if (!content) {
+	function loadFromURI() {
+	  const hash = window.location.hash.slice(1);
+	  if (!hash.startsWith('schema=')) {
 	    return;
 	  }
-	  getLeftInput().value = content;
+	  getLeftInput().value = window.decodeURI(hash.slice(7));
 	}
 
 	function initOptions() {
@@ -36298,7 +36296,7 @@ var jstt = (function (require$$0$1) {
 	}
 
 	function save() {
-	  localStorage.setItem(LOCAL_STORAGE_KEY, getLeftInput().value);
+	  window.location.hash = 'schema=' + window.encodeURI(getLeftInput().value);
 	}
 
 	function getInput() {
